@@ -15,9 +15,15 @@ export default function App() {
 
     const displayLocation = () => {
         setLocation("")
+        let locationNameFormated = "";
         for (const datum of data) {
-            if(datum.locationCode === parseInt(inputCode)) setLocation(datum.locationName)
+            if(datum.locationCode === parseInt(inputCode)) {
+                for (const locationName of datum.locationName){
+                    locationNameFormated = locationNameFormated +"/n"+ locationName;
+                }
+            }
         }
+        setLocation(locationNameFormated)
     }
     return (
         <View style={styles.container}>
